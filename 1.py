@@ -1,3 +1,5 @@
+9/10 chat-bot anh.cs.luc.edu
+
 print("Hi! what's your name")
 username = input('your name_')
 print ("Hello__" + username)
