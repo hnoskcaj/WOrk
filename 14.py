@@ -2,16 +2,21 @@ import random as r
 x = r.randrange(0,10,1)
 
 def guess():
-	if x == int(input("Guess agian 1-10! ")):
+	global List
+	print("You've already guessed " + str(List))
+	z = int(input("Guess agian 1-10! "))
+	if x == z:
 		print("You got it!")
 		exit()
 	else:
+		List = List + " , " + str(z)
 		guess()
 
- 
-if x == int(input("Guess which number im thinking of 1-10! ")):
+z = int(input("Guess which number im thinking of 1-10! ")) 
+if x == z:
 	print("You got it!")
 else:
+	List = str(z)
 	guess()
 
 
