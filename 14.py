@@ -9,7 +9,7 @@ def guess():
 		print("You got it!")
 		exit()
 	else:
-		List = List + " , " + str(z)
+		List = List + ", " + str(z)
 		guess()
 
 z = int(input("Guess which number im thinking of 1-10! ")) 
