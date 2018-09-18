@@ -1,3 +1,6 @@
+#YOu guess an number, and it will remember,
+#and print out the ones you've guessed before is askes again
+
 import random as r
 x = r.randrange(0,10,1)
 
