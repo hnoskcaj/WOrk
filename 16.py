@@ -150,7 +150,7 @@ def stream():
 				print("You found a key!")
 				t.sleep(3)
 			else:
-				print("You've found a key but have no way to carry it.")
+				print("You've found a key but have no way to carry it. If only you had a bag... maybe\nthere was one by the coat???")
 				t.sleep(3)
 	else:
 		print("As you wade allong the stream, you can see a flicker of light in the distance.")
@@ -250,7 +250,7 @@ def move2():
 		move2()
 
 def death():
-	so.system('clear')
+	os.system('clear')
 	print("\n\nYou now have " + str(lives) + " lives\n\n")
 	print("You Died XD!")
 
