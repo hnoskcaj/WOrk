@@ -6,6 +6,7 @@ clothing = 0
 lives = 3
 key = 0
 def start():
+
 	os.system('clear')
 	global slow
 	global bag
@@ -14,11 +15,13 @@ def start():
 	global key
 	print("\n\nYou now have " + str(lives) + " lives\n\n")
 	t.sleep(slow)
+	if lives <= 0:
+			death()
 
 def wakeup():
 	start()
 	print("You wake up in the pitch black dark. You have no idea where you are, or how you got there. The ground is hard, cold and slightly damp.")
-	a = input("You are exausted out of your mind, are you going to \n(A) get up and feel aroung in the dark \n(B) go back to sleep?\n> \n")
+	a = input("You are exausted out of your mind, are you going to... \n(A) get up and feel aroung in the dark \n(B) go back to sleep?\n> \n")
 	if a == "a" or a == "A":
 		lookaround()
 	elif a == "b" or a == "B":
@@ -84,7 +87,7 @@ def move1():
 	a = input("(A Pull it! Twist it! Bop it!\n(B) Hell nah, I'm not touching that!\n\n")
 	if a == ("a" or a == "A") and clothing == 0:
 		if bag > 0:
-			print("Why would you pull a rondom lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nNow you're slowed by 2 seconds and lost half a life. You can also now only cary two items in your bag.")
+			print("Why would you pull a random lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nNow you're slowed by 2 seconds and lost half a life. You can also now only cary two items in your bag.")
 			slow = slow + 2
 			bag = bag - 1
 			lives = lives - .5
@@ -94,7 +97,7 @@ def move1():
 			else:
 				stream()
 		else:
-			print("Why would you pull a rondom lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nNow you're slowed by 2 seconds and lost half a life.")
+			print("Why would you pull a random lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nNow you're slowed by 2 seconds and lost half a life.")
 			lives = 2.5
 			t.sleep(3)
 			if input("Hit Enter to procede") == " ":
@@ -104,7 +107,7 @@ def move1():
 	elif a == ("a" or a == "A") and clothing == 1:
 		slow = slow + 2
 		if bag > 0:
-			print("Why would you pull a rondom lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nSince you were wearing a jacket, it absorbed a lot of water, making it impossible to swim.\nYou drowned. You can also now only cary two items in your bag.")
+			print("Why would you pull a random lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nSince you were wearing a jacket, it absorbed a lot of water, making it\nimpossible to swim.\nYou drowned. You can also now only cary two items in your bag.")
 			bag = bag - 1
 			lives = lives - 1
 			t.sleep(3)
@@ -113,7 +116,7 @@ def move1():
 			else:
 				stream()
 		else:
-			print("Why would you pull a rondom lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nSince you were wearing a jacket, it absorbed a lot of water, making it impossible to swim. You drowned.")
+			print("Why would you pull a random lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nSince you were wearing a jacket, it absorbed a lot of water, making it\nimpossible to swim. You drowned.")
 			lives = lives - 1
 			t.sleep(3)
 			if input("Hit Enter to procede") == " ":
@@ -121,7 +124,7 @@ def move1():
 			else:
 				stream()
 	elif a =="b" or a == "B":
-		print("A good choice, or a missed oportunity? youll never know.")
+		print("A good choice, or a missed oportunity? you'll never know.")
 		t.sleep(3)
 		move2()
 	else:
@@ -135,7 +138,7 @@ def stream():
 	global lives
 	start()
 	if key == 0:
-		print("As you wade allong the stream, you can see a flicker of light in the distance.\nYou kick something small inderwater.")
+		print("As you wade along the stream, you can see a flicker of light in the distance.\nYou kick something small inderwater.")
 		b = input("(A)Pick it up\n(B)Leave it, I learned my lesson last time\n\n")
 		if b == "a" or b == "A":
 			if bag > 0:
@@ -149,7 +152,7 @@ def stream():
 	else:
 		print("As you wade allong the stream, you can see a flicker of light in the distance.")
 	print("You continue on, determined to find the source of the light.\n\n When you finaly get there, there is a set of stairs reaching upwards back into the darkness, lit by a single ominous torch. Your procede upwards.")
-	print("As you reash the top of the stairs there is a door. Will you")
+	print("As you reach the top of the stairs there is a door. Will you")
 	a = input("(A) try to open the door, and see whats on the other side.\n(B)go back down the stairs, and continue down the stream.\n\n")
 	if a == "a" or a == "A":
 		if bag > 0:
@@ -163,9 +166,12 @@ def stream():
 		else:
 			print("As you feel the door for a knob, you notice a coil of rope on the back of the\ndoor. Unfortunately you have to way to carry it, so you continue on throught the door. \nYou continue throught the door into a dimely lit hallway.")
 			t.sleep(3)
-			hall()
+			if input("Hit Enter to procede") == " ":
+				hall()
+			else:
+				hall()
 	elif a =="b" or a == "B":
-		print("A sudden rush of water knocks you over, and back down the stream to.\nYou were'nt ablt to breath for two minutes and swollowed a lot of water. You lost half a life.")
+		print("A sudden rush of water knocks you over, and back down the stream.\nYou were'nt able to breath for two minutes and swollowed a lot of water.\nYou lost half a life.")
 		lives = lives - .5
 		if lives == 0:
 			death()
@@ -183,11 +189,9 @@ def hall():
 	if key == 0:
 		print("After a short while, you come to a locked door. How are you going to procede?")
 		a = input("(A) Turn around and go back the oposite way throught the hallway\n(B) Go back to the stream...\n\n")
-		t.sleep(3)
 		if a == "a" or a == "A":
 			print("After a long walk into the seemingly endless halway that kept getting darker, you arrive back at the lever")
-			b = input("(A)Stay at tthe lever\n(B)Keep going back to the start\n\n")
-			t.sleep(3)
+			b = input("(A)Stay at the lever\n(B)Keep going back to the start\n\n")
 			if b == "a" or b == "A":
 				move1()
 			elif b == "b" or b == "B":
@@ -249,6 +253,8 @@ def move2():
 		move2()
 
 def death():
+	so.system('clear')
+	print("\n\nYou now have " + str(lives) + " lives\n\n")
 	print("You Died XD!")
 	
 
