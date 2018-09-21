@@ -125,8 +125,11 @@ def move1():
 				stream()
 	elif a =="b" or a == "B":
 		print("A good choice, or a missed oportunity? you'll never know.")
-		t.sleep(3)
-		move2()
+		if input("Hit Enter to procede") == " ":
+			move2()
+		else:
+			move2()
+
 	else:
 		print("\nplease enter 'a' or 'b'\n\n\n")
 		t.sleep(3)
@@ -138,7 +141,7 @@ def stream():
 	global lives
 	start()
 	if key == 0:
-		print("As you wade along the stream, you can see a flicker of light in the distance.\nYou kick something small inderwater.")
+		print("As you wade along the stream, you can see a flicker of light in the distance.\nYou kick something small underwater.")
 		b = input("(A)Pick it up\n(B)Leave it, I learned my lesson last time\n\n")
 		if b == "a" or b == "A":
 			if bag > 0:
@@ -151,10 +154,10 @@ def stream():
 				t.sleep(3)
 	else:
 		print("As you wade allong the stream, you can see a flicker of light in the distance.")
-	print("You continue on, determined to find the source of the light.\n\n When you finaly get there, there is a set of stairs reaching upwards back into the darkness, lit by a single ominous torch. Your procede upwards.")
+	print("You continue on, determined to find the source of the light.\n\nWhen you finaly get there, there is a set of stairs reaching upwards back into the darkness, lit by a single ominous torch. Your procede upwards.")
 	print("As you reach the top of the stairs there is a door. Will you")
-	a = input("(A) try to open the door, and see whats on the other side.\n(B)go back down the stairs, and continue down the stream.\n\n")
-	if a == "a" or a == "A":
+	a = input("(A)Go back down the stairs, and continue down the stream.\n(B)Try to open the door, and see whats on the other side.\n\n")
+	if a == "b" or a == "B":
 		if bag > 0:
 			print("As you feel the door for a knob, you notice a coil of rope on the back of the\ndoor. you put in in your bag and open the door.\nYou continue throught the door into a dimely lit hallway.")
 			bag = bag - 1
@@ -170,7 +173,7 @@ def stream():
 				hall()
 			else:
 				hall()
-	elif a =="b" or a == "B":
+	elif a =="a" or a == "A":
 		print("A sudden rush of water knocks you over, and back down the stream.\nYou were'nt able to breath for two minutes and swollowed a lot of water.\nYou lost half a life.")
 		lives = lives - .5
 		if lives == 0:
@@ -188,7 +191,7 @@ def hall():
 	start()
 	if key == 0:
 		print("After a short while, you come to a locked door. How are you going to procede?")
-		a = input("(A) Turn around and go back the oposite way throught the hallway\n(B) Go back to the stream...\n\n")
+		a = input("(A) Turn around and go back the oposite way throught the hallway\n(B) Go back to the door in the hall...\n\n")
 		if a == "a" or a == "A":
 			print("After a long walk into the seemingly endless halway that kept getting darker, you arrive back at the lever")
 			b = input("(A)Stay at the lever\n(B)Keep going back to the start\n\n")
@@ -201,7 +204,7 @@ def hall():
 				t.sleep(3)
 				hall()
 		elif a == "b" or a == "B":
-			stream()
+			door()
 		else:
 			print("\nplease enter 'a' or 'b'\n\n\n")
 			t.sleep(3)
@@ -225,7 +228,7 @@ def hall():
 		elif a == "b" or a == "B":
 			stream()
 		elif a == "c" or a =="C":
-			print("After a short while, you come to a locked door. you use the key that you found earlier. cautiously open the door, and step out onto a city street.\nYou've escaped this underground dungeon, but will you get home? good luck!")
+			print("You use the key that you found earlier. Cautiously open the door, and step out\nonto a city street.\nYou've escaped this underground dungeon, but will you get home? good luck!")
 			exit()
 		else:
 			print("\nplease enter 'a' or 'b'\n\n\n")
@@ -238,13 +241,7 @@ def move2():
 	print("You walk down the hallway some more and, as there seems to be more light the further you go, pass by a doorway.")
 	a = input("(A)Go throught the door\n(B) keep going down the hallway\n\n")
 	if a == "a" or a == "A":
-		print("you go throught the door which leads to a set of steps. as you walk down, you slip. falling to the bottom into a stream. after being toumbled  in the water, your dead body ends up at the base of the stream.\n")
-		lives = lives - 1
-		t.sleep(3)
-		if input("Hit Enter to procede") == " ":
-			stream()
-		else:
-			stream()
+		door()
 	elif a =="b" or a == "B":
 		hall()
 	else:
@@ -256,6 +253,17 @@ def death():
 	so.system('clear')
 	print("\n\nYou now have " + str(lives) + " lives\n\n")
 	print("You Died XD!")
+
+def door():
+	global lives
+	start()
+	print("You go throught the door which leads to a set of steps. as you walk down, you\nslip. Falling to the bottom into a stream. After being toumbled in the water,\nyour dead body ends up at the base of the stream.\n")
+	lives = lives - 1
+	t.sleep(3)
+	if input("Hit Enter to procede") == " ":
+		stream()
+	else:
+		stream()
 	
 
 wakeup()
