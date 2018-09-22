@@ -84,8 +84,8 @@ def move1():
 	global clothing
 	start()
 	print("You feel your way along a wall, as you walk, you feel what seems like a lever on\nthe wall\n")
-	a = input("(A Pull it! Twist it! Bop it!\n(B) Hell nah, I'm not touching that!\n\n")
-	if a == ("a" or a == "A") and clothing == 0:
+	a = input("(A) Hell nah, I'm not touching that!\n(B)Pull it! Twist it! Bop it!\n\n\n")
+	if a == ("b" or a == "B") and clothing == 0:
 		if bag > 0:
 			print("Why would you pull a random lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nNow you're slowed by 2 seconds and lost half a life. You can also now only cary two items in your bag.")
 			slow = slow + 2
@@ -104,7 +104,7 @@ def move1():
 				stream()
 			else:
 				stream()
-	elif a == ("a" or a == "A") and clothing == 1:
+	elif a == ("b" or a == "B") and clothing == 1:
 		slow = slow + 2
 		if bag > 0:
 			print("Why would you pull a random lever in a dark hallway????? You're dumb so it\nopened a trap door into a shollow stream you fell and broke your legs.\nSince you were wearing a jacket, it absorbed a lot of water, making it\nimpossible to swim.\nYou drowned. You can also now only cary two items in your bag.")
@@ -123,7 +123,7 @@ def move1():
 				stream()
 			else:
 				stream()
-	elif a =="b" or a == "B":
+	elif a =="a" or a == "A":
 		print("A good choice, or a missed oportunity? you'll never know.")
 		if input("Hit Enter to procede") == " ":
 			move2()
@@ -152,9 +152,10 @@ def stream():
 			else:
 				print("You've found a key but have no way to carry it. If only you had a bag... maybe\nthere was one by the coat???")
 				t.sleep(3)
+				stream()
 	else:
 		print("As you wade allong the stream, you can see a flicker of light in the distance.")
-	print("You continue on, determined to find the source of the light.\n\nWhen you finaly get there, there is a set of stairs reaching upwards back into the darkness, lit by a single ominous torch. Your procede upwards.")
+	print("You continue on, determined to find the source of the light.\n\nWhen you finaly get there, there is a set of stairs reaching upwards back into the darkness, lit by a single ominous torch. You procede upwards.")
 	print("As you reach the top of the stairs there is a door. Will you")
 	a = input("(A)Go back down the stairs, and continue down the stream.\n(B)Try to open the door, and see whats on the other side.\n\n")
 	if a == "b" or a == "B":
