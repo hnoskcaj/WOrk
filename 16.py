@@ -21,10 +21,10 @@ def start():
 def wakeup():
 	start()
 	print("You wake up in the pitch black dark. You have no idea where you are, or how you got there. The ground is hard, cold and slightly damp.")
-	a = input("You are exausted out of your mind, are you going to... \n(A) get up and feel aroung in the dark \n(B) go back to sleep?\n> \n")
-	if a == "a" or a == "A":
+	a = input("You are exausted out of your mind, are you going to... \n(A)Go back to sleep\n(B)Get up and feel aroung in the dark\n \n")
+	if a == "b" or a == "B":
 		lookaround()
-	elif a == "b" or a == "B":
+	elif a == "a" or a == "A":
 		sleep()
 	else:
 		print("\nplease enter 'a' or 'b'\n\n\n")
