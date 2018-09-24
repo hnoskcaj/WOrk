@@ -8,11 +8,7 @@ key = 0
 def start():
 
 	os.system('clear')
-	global slow
-	global bag
-	global clothing
-	global lives
-	global key
+	global slow, bag, clothing, lives, key
 	print("\n\nYou now have " + str(lives) + " lives\n\n")
 	t.sleep(slow)
 	if lives <= 0:
@@ -53,8 +49,7 @@ def lookaround():
 		lookaround()
 
 def pickup():
-	global slow
-	global clothing
+	global slow, clothing
 	start()
 	print("Great job! you've discovered a jacket! This will take away any hypothermia you\nalready have, speeding up your gameplay.")
 	slow = 0
@@ -78,10 +73,7 @@ def scramble():
 		scramble()
 
 def move1():
-	global slow
-	global bag
-	global lives
-	global clothing
+	global slow, bag, lives, clothing
 	start()
 	print("You feel your way along a wall, as you walk, you feel what seems like a lever on\nthe wall\n")
 	a = input("(A) Hell nah, I'm not touching that!\n(B)Pull it! Twist it! Bop it!\n\n\n")
@@ -136,9 +128,7 @@ def move1():
 		move1()
 
 def stream():
-	global bag
-	global key
-	global lives
+	global bag, key, lives
 	start()
 	if key == 0:
 		print("As you wade along the stream, you can see a flicker of light in the distance.\nYou kick something small underwater.")
@@ -150,11 +140,18 @@ def stream():
 				print("You found a key!")
 				t.sleep(3)
 			else:
-				print("You've found a key but have no way to carry it. If only you had a bag... maybe\nthere was one by the coat???")
-				t.sleep(3)
-				stream()
+				print("You've found a key but have no way to carry it. If only you had a bag... maybe\nthere was one by the sart???\n\n")
+				
+		elif b == "b" or b == "B":
+			pass
+		else:
+			print("\nplease enter 'a' or 'b'\n\n\n")
+			t.sleep(3)
+			stream()
+
 	else:
 		print("As you wade allong the stream, you can see a flicker of light in the distance.")
+	
 	print("You continue on, determined to find the source of the light.\n\nWhen you finaly get there, there is a set of stairs reaching upwards back into the darkness, lit by a single ominous torch. You procede upwards.")
 	print("As you reach the top of the stairs there is a door. Will you")
 	a = input("(A)Go back down the stairs, and continue down the stream.\n(B)Try to open the door, and see whats on the other side.\n\n")
@@ -258,7 +255,7 @@ def death():
 def door():
 	global lives
 	start()
-	print("You go throught the door which leads to a set of steps. as you walk down, you\nslip. Falling to the bottom into a stream. After being toumbled in the water,\nyour dead body ends up at the base of the stream.\n")
+	print("You go throught the door which leads to a set of steps. as you walk down, you\nslip. Falling to the bottom into a stream. After being tumbled in the water,\nyour dead body ends up at the base of the stream.\n")
 	lives = lives - 1
 	t.sleep(3)
 	if input("Hit Enter to procede") == " ":
