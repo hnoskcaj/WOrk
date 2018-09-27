@@ -1,4 +1,5 @@
 sevens = []
+count = 0
 while count<700:
 	sevens.append(count)
 	count += 7
