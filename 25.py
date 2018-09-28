@@ -27,4 +27,6 @@ elif lits[9] % 3 == 0:
 	del lits[9]
 elif lits[10] % 3 == 0:
 	del lits[10]
+
+lits.sort(key = int)
 print(lits)
