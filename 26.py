@@ -13,6 +13,7 @@ while count < 100:
 #first.append(int(str(lits[3])[:1]))
 #first.append(int(str(lits[4])[:1]))
 #first.append(int(str(lits[5])[:1]))
+first.sort(key = int)
 
 print(first)
 
