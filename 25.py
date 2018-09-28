@@ -1,5 +1,4 @@
 import random as r
-a = 0
 lits = []
 for i in range (10):
 	lits.append(r.randrange(1,101,1))
