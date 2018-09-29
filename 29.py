@@ -20,14 +20,22 @@ print(board)
 
 #for x, y in zip(range(int(sys.argv[1]))), zip(range(int(sys.argv[2]))):
 #while x<= int(sys.argv[1]) and y <= int(sys.argv[2]):
-	if board[1][3] ==1:
-		eb[x][y] = '*'
-		x = x + 1
-		y = y + 1
-
+	#if board[1][3] ==1:
+	#	eb[x][y] = '*'
+	#	x = x + 1
+	#	y = y + 1
 
 for x in range(len(board)):
 	print(*board[x])
+
+#for x, y in zip(range(int(sys.argv[1]))), zip(range(int(sys.argv[2]))):
+while x<= 5 and y <= 5:
+	if board[x][y] ==1:
+		eb[x][y] = '*'
+	x = x + 1
+	y = y + 1
+
+print("\n\n")
 
 for x in range(len(eb)):
 	print(*eb[x])
