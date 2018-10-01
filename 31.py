@@ -1,11 +1,8 @@
 import sys
 import random as r
 board = []
-eb = []
 count = 0
-x = 0
-y = 0
-bomb = 0
+
 
 
 board = [[0]*int(sys.argv[1]) for x in range (int(sys.argv[2]))]
