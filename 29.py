@@ -5,6 +5,7 @@ eb = []
 count = 0
 x = 0
 y = 0
+bomb = 0
 
 
 board = [[0]*int(sys.argv[1]) for x in range (int(sys.argv[2]))]
@@ -25,15 +26,18 @@ for x in range(len(board)):
 #		eb[x][y] = '*'
 	#x = x + 1
 	#y = y + 1
-for x in range(board):
-	if board[x+1][y] == str(1):
+for x in range(0,len(str(board))):
+	if board[x+1][y] == 1:
 		bomb = bomb + 1
-	if board[x-1][y] == 1:
-		bomb = bomb + 1
+	if x>0:
+		print(x,y)
+		if board[x-1][y] == 1:
+			bomb = bomb + 1
 	if board[x][y+1] == 1:
 		bomb = bomb + 1
 	if board[x][y-1] == 1:
 		bomb = bomb + 1
+	board[x] = bomb
 
 
 #for x, y in zip(range(int(sys.argv[1]))), zip(range(int(sys.argv[2]))):
