@@ -55,4 +55,6 @@ while count < int(sys.argv[3]):
 print(board,"\n")
 
 for x in range(1,len(board)-1):
+	del board[x][0]
+	del board[x][-1]
 	print(*board[x])
