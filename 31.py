@@ -72,17 +72,17 @@ print("\n")
 
 
 
-#for x in range(0,width-2):
-	#gameboard[1] = x
+
 
 
 for x in range(0,len(gameboard)-1):
-	del gameboard[x][0]
+	for b in range(1,11):
+		gameboard[b][0] = b
+	gameboard[x][0]
 	del gameboard[x][-1]
-	for a in range(0,10):
+	for a in range(1,11):
 		gameboard[0][a]= a
-	#for x in range(1,9):
-	#	gameboard[0][1]= 1
+	
 	print(*gameboard[x])
 
 
