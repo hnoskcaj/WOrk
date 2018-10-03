@@ -3,10 +3,13 @@ import random as r
 board = []
 count = 0
 bomb = []
+gameboard = []
 a = 0
 
 width = int(sys.argv[1])+2 
 height = int(sys.argv[2])+2
+
+gameboard = [['-']*(width) for x in range (height)]
 
 board = [[0]*width for x in range (height)]
 print(board)
@@ -19,6 +22,7 @@ while count < int(sys.argv[3]):
 	if (xrand,yrand) not in bomb:
 	#print(xrand,yrand,len(board),len(board[0]))
 		board[xrand][yrand] = '*'
+		gameboard[xrand][yrand] = '*'
 		bomb.append((xrand,yrand))
 		#bomb.append(yrand)
 		print(xrand,yrand,"---------")
@@ -58,3 +62,29 @@ for x in range(1,len(board)-1):
 	del board[x][0]
 	del board[x][-1]
 	print(*board[x])
+
+print("\n")
+
+
+
+
+
+
+
+
+#for x in range(0,width-2):
+	#gameboard[1] = x
+
+
+for x in range(0,len(gameboard)-1):
+	del gameboard[x][0]
+	del gameboard[x][-1]
+	for a in range(0,10):
+		gameboard[0][a]= a
+	#for x in range(1,9):
+	#	gameboard[0][1]= 1
+	print(*gameboard[x])
+
+
+
+
