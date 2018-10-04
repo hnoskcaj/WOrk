@@ -1,3 +1,6 @@
+#https://stackoverflow.com/questions/961263/two-values-from-one-input-in-python
+#Accessed on 10/3/18 referenced a way to pull arguments from an input
+
 import sys
 import random as r
 board = []
@@ -22,7 +25,6 @@ while count < int(sys.argv[3]):
 	if (xrand,yrand) not in bomb:
 	#print(xrand,yrand,len(board),len(board[0]))
 		board[xrand][yrand] = '*'
-		gameboard[xrand][yrand] = '*'
 		bomb.append((xrand,yrand))
 		#bomb.append(yrand)
 		print(xrand,yrand,"---------")
@@ -67,14 +69,6 @@ print("\n")
 
 
 
-
-
-
-
-
-
-
-
 for x in range(0,len(gameboard)-1):
 	for b in range(1,11):
 		gameboard[b][0] = b
@@ -84,6 +78,14 @@ for x in range(0,len(gameboard)-1):
 		gameboard[0][a]= a
 	
 	print(*gameboard[x])
+
+x, y = input("Enter a set of coordinates to reveal a square: ").split()
+gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
+for x in range(0,len(gameboard)-1):
+	print(*gameboard[x])
+
+#guess = input("Enter a set of coordinates to reveal a square!")
+#print(guess.arg[1])
 
 
 
