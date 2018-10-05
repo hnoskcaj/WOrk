@@ -87,44 +87,44 @@ def reveal():
 	for z in range(len(clear)):
 		xx = clear[z][0]
 		yy = clear[z][1]
-		gameboard[xx][yy] = board[xx-1][yy-1]
-	if board[xx][yy+1] == 0:
-		clear.append((xx,yy+1))
+		gameboard[xx][yy+1] = board[xx-1][yy]
+		if gameboard[xx][yy+1] == 0:
+			clear.append((xx,yy+1))
 
 	
-	gameboard[xx][yy-1] = board[xx][yy-1]
-	if board[xx][yy-1] == 0:
-		clear.append((xx,yy-1))
+		gameboard[xx][yy-1] = board[xx-1][yy-2]
+		if gameboard[xx][yy-1] == 0:
+			clear.append((xx,yy-1))
 
 
-	gameboard[xx+1][yy] = board[xx+1][yy]
-	if board[xx+1][yy] == 0:
-		clear.append((xx+1,yy))
-
-	
-	gameboard[xx+1][yy+1] = board[xx+1][yy+1]
-	if board[xx+1][yy+1] == 0:
-		clear.append((xx+1,yy+1))
+		gameboard[xx+1][yy] = board[xx][yy-1]
+		if gameboard[xx+1][yy] == 0:
+			clear.append((xx+1,yy))
 
 	
-	gameboard[xx+1][yy-1] = board[xx+1][yy-1]
-	if board[xx+1][yy-1] == 0:
-		clear.append((xx+1,yy-1))
+		gameboard[xx+1][yy+1] = board[xx][yy]
+		if gameboard[xx+1][yy+1] == 0:
+			clear.append((xx+1,yy+1))
 
 	
-	gameboard[xx-1][yy+1] = board[xx-1][yy+1]
-	if gameboard[xx-1][yy+1] == 0:
-		clear.append((xx-1,yy+1))
-
-
-	gameboard[xx-1][yy] = board[xx-1][yy]
-	if gameboard[xx-1][yy] == 0:
-		clear.append((xx-1,yy))
+		gameboard[xx+1][yy-1] = board[xx][yy-2]
+		if gameboard[xx+1][yy-1] == 0:
+			clear.append((xx+1,yy-1))
 
 	
-	gameboard[xx-1][yy-1] = board[xx-1][yy-1]
-	if gameboard[xx-1][yy-1] == 0:
-		clear.append((xx-1,yy-1))
+		gameboard[xx-1][yy+1] = board[xx-2][yy]
+		if gameboard[xx-1][yy+1] == 0:
+			clear.append((xx-1,yy+1))
+
+
+		gameboard[xx-1][yy] = board[xx-2][yy-1]
+		if gameboard[xx-1][yy] == 0:
+			clear.append((xx-1,yy))
+
+	
+		gameboard[xx-1][yy-1] = board[xx-2][yy-2]
+		if gameboard[xx-1][yy-1] == 0:
+			clear.append((xx-1,yy-1))
 
 
 
