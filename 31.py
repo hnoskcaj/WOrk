@@ -8,6 +8,7 @@ count = 0
 bomb = []
 gameboard = []
 a = 0
+clear = []
 
 width = int(sys.argv[1])+2 
 height = int(sys.argv[2])+2
@@ -79,19 +80,56 @@ for x in range(0,len(gameboard)-1):
 	
 	print(*gameboard[x])
 
-# ask user for bomb location
-#while True:
-	#try:
-		#x, y = input("Enter a set of coordinates to reveal a square: ").split()
+def reveal():
+	global xx, yy, x, y
+	print(xx,yy)
+	for z in range(len(clear)):
+			xx = clear[z][1]
+			yy = clear[z][2]
 
-	#except ValueError:
-		#print("Type your coordinates x y")
-# reveal element at user location
-#gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
-# print gameboard
-#for x in range(0,len(gameboard)-1):
-#	print(*gameboard[x])
-# while a bomb is not revealed
+	gameboard[int(x)][int(y)+1] = board[xx][yy+1]
+	if board[xx][yy+1] == 0:
+		clear.append((xx,yy+1))
+
+	
+	gameboard[int(x)][int(y)-1] = board[xx][yy-1]
+	if board[xx][yy-1] == 0:
+		clear.append((xx,yy-1))
+
+
+	gameboard[int(x)+1][int(y)] = board[xx+1][yy]
+	if board[xx+1][yy] == 0:
+		clear.append((xx+1,yy))
+
+	
+	gameboard[int(x)+1][int(y)+1] = board[xx+1][yy+1]
+	if board[xx+1][yy+1] == 0:
+		clear.append((xx+1,yy+1))
+
+	
+	gameboard[int(x)+1][int(y)-1] = board[xx+1][yy-1]
+	if board[xx+1][yy-1] == 0:
+		clear.append((xx+1,yy-1))
+
+	
+	gameboard[int(x)-1][int(y)+1] = board[xx-1][yy+1]
+	if gameboard[xx-1][yy+1] == 0:
+		clear.append((xx-1,yy+1))
+
+
+	gameboard[int(x)-1][int(y)] = board[xx-1][yy]
+	if gameboard[xx-1][yy] == 0:
+		clear.append((xx-1,yy))
+
+	
+	gameboard[int(x)-1][int(y)-1] = board[xx-1][yy-1]
+	if gameboard[xx-1][yy-1] == 0:
+		clear.append((xx-1,yy-1))
+
+
+
+
+
 x = 0
 y = 0
 while True:
@@ -102,8 +140,18 @@ while True:
 		x, y = input("Enter a set of coordinates to reveal a square: ").split()
 	# reveal location
 		print(x,y)
+		xx = int(x)-1
+		yy = int(y)-1
+		if board[int(x)-1][int(y)-1] == 0:
+			reveal()
+
 		gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
 	# print gameboard
+		for a in range(1,11):
+			gameboard[0][a]= a
+		for b in range(1,11):
+			gameboard[b][0] = b
+
 		for a in range(0,len(gameboard)-1):
 			print(*gameboard[a])
 	except ValueError:
