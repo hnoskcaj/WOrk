@@ -80,27 +80,38 @@ for x in range(0,len(gameboard)-1):
 	print(*gameboard[x])
 
 # ask user for bomb location
-x, y = input("Enter a set of coordinates to reveal a square: ").split()
+#while True:
+	#try:
+		#x, y = input("Enter a set of coordinates to reveal a square: ").split()
+
+	#except ValueError:
+		#print("Type your coordinates x y")
 # reveal element at user location
-gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
+#gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
 # print gameboard
-for x in range(0,len(gameboard)-1):
-	print(*gameboard[x])
+#for x in range(0,len(gameboard)-1):
+#	print(*gameboard[x])
 # while a bomb is not revealed
-while gameboard[int(x)][int(y)] != '*':
+x = 0
+y = 0
+while True:
+	try:
+		if gameboard[int(x)][int(y)] == '*':
+			break
 	# choose second location
-	x, y = input("Enter a set of coordinates to reveal a square: ").split()
+		x, y = input("Enter a set of coordinates to reveal a square: ").split()
 	# reveal location
-	print(x,y)
-	gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
+		print(x,y)
+		gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
 	# print gameboard
-	for a in range(0,len(gameboard)-1):
-		print(*gameboard[a])
+		for a in range(0,len(gameboard)-1):
+			print(*gameboard[a])
 	except ValueError:
 		print("Type your coordinates x y")
 
 # for x in range(0,len(gameboard)-1):
 # 		print(*gameboard[x])
+print("You clicked on a bomb!")
 exit()
 
 #guess = input("Enter a set of coordinates to reveal a square!")
