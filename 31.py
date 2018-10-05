@@ -83,46 +83,46 @@ for x in range(0,len(gameboard)-1):
 def reveal():
 	global xx, yy, x, y
 	print(xx,yy)
+	clear.append((xx,yy))
 	for z in range(len(clear)):
-			xx = clear[z][1]
-			yy = clear[z][2]
-
-	gameboard[int(x)][int(y)+1] = board[xx][yy+1]
+		xx = clear[z][0]
+		yy = clear[z][1]
+		gameboard[xx][yy] = board[xx-1][yy-1]
 	if board[xx][yy+1] == 0:
 		clear.append((xx,yy+1))
 
 	
-	gameboard[int(x)][int(y)-1] = board[xx][yy-1]
+	gameboard[xx][yy-1] = board[xx][yy-1]
 	if board[xx][yy-1] == 0:
 		clear.append((xx,yy-1))
 
 
-	gameboard[int(x)+1][int(y)] = board[xx+1][yy]
+	gameboard[xx+1][yy] = board[xx+1][yy]
 	if board[xx+1][yy] == 0:
 		clear.append((xx+1,yy))
 
 	
-	gameboard[int(x)+1][int(y)+1] = board[xx+1][yy+1]
+	gameboard[xx+1][yy+1] = board[xx+1][yy+1]
 	if board[xx+1][yy+1] == 0:
 		clear.append((xx+1,yy+1))
 
 	
-	gameboard[int(x)+1][int(y)-1] = board[xx+1][yy-1]
+	gameboard[xx+1][yy-1] = board[xx+1][yy-1]
 	if board[xx+1][yy-1] == 0:
 		clear.append((xx+1,yy-1))
 
 	
-	gameboard[int(x)-1][int(y)+1] = board[xx-1][yy+1]
+	gameboard[xx-1][yy+1] = board[xx-1][yy+1]
 	if gameboard[xx-1][yy+1] == 0:
 		clear.append((xx-1,yy+1))
 
 
-	gameboard[int(x)-1][int(y)] = board[xx-1][yy]
+	gameboard[xx-1][yy] = board[xx-1][yy]
 	if gameboard[xx-1][yy] == 0:
 		clear.append((xx-1,yy))
 
 	
-	gameboard[int(x)-1][int(y)-1] = board[xx-1][yy-1]
+	gameboard[xx-1][yy-1] = board[xx-1][yy-1]
 	if gameboard[xx-1][yy-1] == 0:
 		clear.append((xx-1,yy-1))
 
@@ -140,8 +140,8 @@ while True:
 		x, y = input("Enter a set of coordinates to reveal a square: ").split()
 	# reveal location
 		print(x,y)
-		xx = int(x)-1
-		yy = int(y)-1
+		xx = int(x)
+		yy = int(y)
 		if board[int(x)-1][int(y)-1] == 0:
 			reveal()
 
