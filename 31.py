@@ -79,10 +79,29 @@ for x in range(0,len(gameboard)-1):
 	
 	print(*gameboard[x])
 
+# ask user for bomb location
 x, y = input("Enter a set of coordinates to reveal a square: ").split()
+# reveal element at user location
 gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
+# print gameboard
 for x in range(0,len(gameboard)-1):
 	print(*gameboard[x])
+# while a bomb is not revealed
+while gameboard[int(x)][int(y)] != '*':
+	# choose second location
+	x, y = input("Enter a set of coordinates to reveal a square: ").split()
+	# reveal location
+	print(x,y)
+	gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
+	# print gameboard
+	for a in range(0,len(gameboard)-1):
+		print(*gameboard[a])
+	except ValueError:
+		print("Type your coordinates x y")
+
+# for x in range(0,len(gameboard)-1):
+# 		print(*gameboard[x])
+exit()
 
 #guess = input("Enter a set of coordinates to reveal a square!")
 #print(guess.arg[1])
