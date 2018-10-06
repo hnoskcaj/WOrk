@@ -1,6 +1,3 @@
-#https://stackoverflow.com/questions/961263/two-values-from-one-input-in-python
-#Accessed on 10/3/18 referenced a way to pull arguments from an input
-
 import sys
 import random as r
 board = []
@@ -8,7 +5,6 @@ count = 0
 bomb = []
 gameboard = []
 a = 0
-clear = []
 
 width = int(sys.argv[1])+2 
 height = int(sys.argv[2])+2
@@ -80,61 +76,19 @@ for x in range(0,len(gameboard)-1):
 	
 	print(*gameboard[x])
 
-#def reveal():
-	#global xx, yy, x, y
-	#print(xx,yy)
-	#clear.append((xx,yy))
-	#while xx != 0 and yy !=0:
-		#for z in range(len(clear)):
-		#	xx = clear[z][0]
-		#	yy = clear[z][1]
-		#	if board[xx-1][yy] != '*':
-		#		gameboard[xx][yy+1] = board[xx-1][yy]
-		#		if gameboard[xx][yy+1] == 0:
-		#			clear.append((xx,yy+1))
-	
-	
-		#	if board[xx-1][yy-2] != '*':
-		#		gameboard[xx][yy-1] = board[xx-1][yy-2]
-		#		if gameboard[xx][yy-1] == 0:
-		#			clear.append((xx,yy-1))
-	
-		#	if board[xx][yy-1] != '*':
-		#		gameboard[xx+1][yy] = board[xx][yy-1]
-		#		if gameboard[xx+1][yy] == 0:
-		#			clear.append((xx+1,yy))
-	
-		#	if board[xx][yy] != '*':
-		#		gameboard[xx+1][yy+1] = board[xx][yy]
-		#		if gameboard[xx+1][yy+1] == 0:
-		#			clear.append((xx+1,yy+1))
-	
-		##	if board[xx][yy-2] != '*':
-		#		gameboard[xx+1][yy-1] = board[xx][yy-2]
-		#		if gameboard[xx+1][yy-1] == 0:
-		#			clear.append((xx+1,yy-1))
-	
-		#	if board[xx-2][yy] != '*':
-		#		gameboard[xx-1][yy+1] = board[xx-2][yy]
-		#		if gameboard[xx-1][yy+1] == 0:
-		#			clear.append((xx-1,yy+1))
-	
-		#	if board[xx-2][yy-1] != '*':
-		#		gameboard[xx-1][yy] = board[xx-2][yy-1]
-		#		if gameboard[xx-1][yy] == 0:
-		#			clear.append((xx-1,yy))
-	
-		#	if board[xx-2][yy-2] != '*':
-		#		gameboard[xx-1][yy-1] = board[xx-2][yy-2]
-		#		if gameboard[xx-1][yy-1] == 0:
-		#			clear.append((xx-1,yy-1))
-	
+# ask user for bomb location
+#while True:
+	#try:
+		#x, y = input("Enter a set of coordinates to reveal a square: ").split()
 
-
-
-
-
-
+	#except ValueError:
+		#print("Type your coordinates x y")
+# reveal element at user location
+#gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
+# print gameboard
+#for x in range(0,len(gameboard)-1):
+#	print(*gameboard[x])
+# while a bomb is not revealed
 x = 0
 y = 0
 while True:
@@ -145,18 +99,8 @@ while True:
 		x, y = input("Enter a set of coordinates to reveal a square: ").split()
 	# reveal location
 		print(x,y)
-		xx = int(x)
-		yy = int(y)
-		if board[int(x)-1][int(y)-1] == 0:
-			reveal()
-
 		gameboard[int(x)][int(y)] = board[int(x)][int(y)-1]
 	# print gameboard
-		for a in range(1,11):
-			gameboard[0][a]= a
-		for b in range(1,11):
-			gameboard[b][0] = b
-
 		for a in range(0,len(gameboard)-1):
 			print(*gameboard[a])
 	except ValueError:
@@ -169,7 +113,3 @@ exit()
 
 #guess = input("Enter a set of coordinates to reveal a square!")
 #print(guess.arg[1])
-
-
-
-
