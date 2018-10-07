@@ -89,7 +89,7 @@ def reveal():
 	for z in range(len(clear)):
 		xx = clear[z][0]
 		yy = clear[z][1]
-		if board[xx-1][yy] != '*':
+		if  xx < 10 and yy+1 < 10 and board[xx-1][yy] != '*':
 			gameboard[xx][yy+1] = board[xx-1][yy]
 			if gameboard[xx][yy+1] == 0:
 				if (xx,yy+1) not in clear:
@@ -99,7 +99,7 @@ def reveal():
 				zeros = zeros-1
 
 	
-		if board[xx-1][yy-2] != '*':
+		if xx < 10 and yy-1 < 10 and board[xx-1][yy-2] != '*':
 			gameboard[xx][yy-1] = board[xx-1][yy-2]
 			if gameboard[xx][yy-1] == 0:
 				if (xx,yy-1) not in clear:
@@ -108,7 +108,7 @@ def reveal():
 			else:
 				zeros = zeros-1
 
-		if board[xx][yy-1] != '*':
+		if xx+1 < 10 and yy < 10 and board[xx][yy-1] != '*':
 			gameboard[xx+1][yy] = board[xx][yy-1]
 			if gameboard[xx+1][yy] == 0:
 				if (xx+1,yy) not in clear:
@@ -117,7 +117,7 @@ def reveal():
 			else:
 				zeros = zeros-1
 
-			if board[xx][yy] != '*':
+			if xx+1 < 10 and yy+1 < 10 and board[xx][yy] != '*':
 				gameboard[xx+1][yy+1] = board[xx][yy]
 			if gameboard[xx+1][yy+1] == 0:
 				if (xx+1,yy+1) not in clear:
@@ -126,7 +126,7 @@ def reveal():
 			else:
 				zeros = zeros-1
 	
-		if board[xx][yy-2] != '*':
+		if xx+1 < 10 and yy-1 < 10 and board[xx][yy-2] != '*':
 			gameboard[xx+1][yy-1] = board[xx][yy-2]
 			if gameboard[xx+1][yy-1] == 0:
 				if (xx+1,yy-1) not in clear:
@@ -135,7 +135,7 @@ def reveal():
 			else:
 				zeros = zeros-1
 
-		if board[xx-2][yy] != '*':
+		if xx-1 < 10 and yy+1 < 10 and board[xx-2][yy] != '*':
 			gameboard[xx-1][yy+1] = board[xx-2][yy]
 			if gameboard[xx-1][yy+1] == 0:
 				if (xx-1,yy+1) not in clear:
@@ -143,7 +143,7 @@ def reveal():
 					zeros = 8
 			else:
 				zeros = zeros-1
-		if board[xx-2][yy-1] != '*':
+		if xx-1 < 10 and yy < 10 and board[xx-2][yy-1] != '*':
 			gameboard[xx-1][yy] = board[xx-2][yy-1]
 			if gameboard[xx-1][yy] == 0:
 				if (xx-1,yy) not in clear:
@@ -152,7 +152,7 @@ def reveal():
 			else:
 				zeros = zeros-1
 	
-		if board[xx-2][yy-2] != '*':
+		if xx-1 < 10 and yy-1 < 10 and board[xx-2][yy-2] != '*':
 			gameboard[xx-1][yy-1] = board[xx-2][yy-2]
 			if gameboard[xx-1][yy-1] == 0:
 				if (xx-1,yy-1) not in clear:
