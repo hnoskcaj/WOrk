@@ -5,6 +5,8 @@ count = 0
 bomb = []
 gameboard = []
 a = 0
+clear = []
+zeros = 0
 
 width = int(sys.argv[1])+2 
 height = int(sys.argv[2])+2
@@ -76,19 +78,127 @@ for x in range(0,len(gameboard)-1):
 	
 	print(*gameboard[x])
 
-# ask user for bomb location
-#while True:
-	#try:
-		#x, y = input("Enter a set of coordinates to reveal a square: ").split()
+def reveal():
+	global xx, yy, x, y, zeros
+	zeros = 8
+	while zeros > 0:
+		print(clear)
+		print(xx,yy)
+		clear.append((xx,yy))
+		for z in range(len(clear)):
+			xx = clear[z][0]
+			yy = clear[z][1]
+			for down in range(-1,2):
+				for over in range(-1,2):
+					print(xx+over, yy+down)
+					if 0 < xx+over-1 < 10 and 0 < yy+down-1 < 10 and board[xx+over][yy+down-1] != '*':
+						gameboard[xx+over][yy+down] = board[xx+over][yy+down-1]
+						if gameboard[xx+over][yy+down] == 0:
+							if (xx+down,yy+down) not in clear:
+								clear.append((xx+down,yy+down))
+								zeros = zeros + 8
+						else:
+							zeros = zeros-1
+					else:
+						zeros = zeros-1
+		
 
-	#except ValueError:
-		#print("Type your coordinates x y")
-# reveal element at user location
-#gameboard[int(x)][int(y)] = board[int(x)-1][int(y)-1]
-# print gameboard
-#for x in range(0,len(gameboard)-1):
-#	print(*gameboard[x])
-# while a bomb is not revealed
+
+			# if  0 < xx < 10 and 0 < yy-1 < 10 and board[xx-1][yy] != '*':
+			# 	gameboard[xx][yy+1] = board[xx-1][yy]
+			# 	if gameboard[xx][yy+1] == 0:
+			# 		if (xx,yy+1) not in clear:
+			# 			clear.append((xx,yy+1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
+
+		
+			# if 0 < xx-1 < 10 and 0 < yy-2 < 10 and board[xx-1][yy-2] != '*':
+			# 	gameboard[xx][yy-1] = board[xx-1][yy-2]
+			# 	if gameboard[xx][yy-1] == 0:
+			# 		if (xx,yy-1) not in clear:
+			# 			clear.append((xx,yy-1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 	zeros = zeros-1
+
+			# if 0 < xx < 10 and 0 < yy-1 < 10 and board[xx][yy-1] != '*':
+			# 	gameboard[xx+1][yy] = board[xx][yy-1]
+			# 	if gameboard[xx+1][yy] == 0:
+			# 		if (xx+1,yy) not in clear:
+			# 			clear.append((xx+1,yy))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
+
+			# if 0 < xx < 10 and 0 < yy < 10 and board[xx][yy] != '*':
+			# 	gameboard[xx+1][yy+1] = board[xx][yy]
+			# 	if gameboard[xx+1][yy+1] == 0:
+			# 		if (xx+1,yy+1) not in clear:
+			# 			clear.append((xx+1,yy+1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 	zeros = zeros-1
+	
+			# if 0 < xx < 10 and 0 < yy-2 < 10 and board[xx][yy-2] != '*':
+			# 	gameboard[xx+1][yy-1] = board[xx][yy-2]
+			# 	if gameboard[xx+1][yy-1] == 0:
+			# 		if (xx+1,yy-1) not in clear:
+			# 			clear.append((xx+1,yy-1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
+
+			# if 0 < xx-2 < 10 and 0 < yy < 10 and board[xx-2][yy] != '*':
+			# 	gameboard[xx-1][yy+1] = board[xx-2][yy]
+			# 	if gameboard[xx-1][yy+1] == 0:
+			# 		if (xx-1,yy+1) not in clear:
+			# 			clear.append((xx-1,yy+1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
+			# if 0 < xx-2 < 10 and 0 < yy-1 < 10 and board[xx-2][yy-1] != '*':
+			# 	gameboard[xx-1][yy] = board[xx-2][yy-1]
+			# 	if gameboard[xx-1][yy] == 0:
+			# 		if (xx-1,yy) not in clear:
+			# 			clear.append((xx-1,yy))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
+		
+			# if 0 < xx-2 < 10 and 0 < yy-2 < 10 and board[xx-2][yy-2] != '*':
+			# 	gameboard[xx-1][yy-1] = board[xx-2][yy-2]
+			# 	if gameboard[xx-1][yy-1] == 0:
+			# 		if (xx-1,yy-1) not in clear:
+			# 			clear.append((xx-1,yy-1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
+	
+
+
+
+
+
+
+
 x = 0
 y = 0
 while True:
@@ -99,8 +209,18 @@ while True:
 		x, y = input("Enter a set of coordinates to reveal a square: ").split()
 	# reveal location
 		print(x,y)
+		xx = int(x)
+		yy = int(y)
+		if board[int(x)][int(y)-1] == 0:
+			reveal()
+
 		gameboard[int(x)][int(y)] = board[int(x)][int(y)-1]
 	# print gameboard
+		for a in range(1,11):
+			gameboard[0][a]= a
+		for b in range(1,11):
+			gameboard[b][0] = b
+
 		for a in range(0,len(gameboard)-1):
 			print(*gameboard[a])
 	except ValueError:

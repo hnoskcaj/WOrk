@@ -1,6 +1,3 @@
-#https://stackoverflow.com/questions/961263/two-values-from-one-input-in-python
-#Accessed on 10/3/18 referenced a way to pull arguments from an input
-
 import sys
 import random as r
 board = []
@@ -91,93 +88,109 @@ def reveal():
 		for z in range(len(clear)):
 			xx = clear[z][0]
 			yy = clear[z][1]
-			if  0 < xx < 10 and 0 < yy-1 < 10 and board[xx-1][yy] != '*':
-				gameboard[xx][yy+1] = board[xx-1][yy]
-				if gameboard[xx][yy+1] == 0:
-					if (xx,yy+1) not in clear:
-						clear.append((xx,yy+1))
-						zeros = zeros + 8
-				else:
-					zeros = zeros-1
-			else:
-					zeros = zeros-1
+			for down in range(-1,2):
+				for over in range(-1,2):
+					print(xx+over, yy+down)
+					if 0 < xx+over-1 < 10 and 0 < yy+down-1 < 10 and board[xx+over][yy+down-1] != '*':
+						gameboard[xx+over][yy+down] = board[xx+over][yy+down-1]
+						if gameboard[xx+over][yy+down] == 0:
+							if (xx+down,yy+down) not in clear:
+								clear.append((xx+down,yy+down))
+								zeros = zeros + 8
+						else:
+							zeros = zeros-1
+					else:
+						zeros = zeros-1
+		
+
+
+			# if  0 < xx < 10 and 0 < yy-1 < 10 and board[xx-1][yy] != '*':
+			# 	gameboard[xx][yy+1] = board[xx-1][yy]
+			# 	if gameboard[xx][yy+1] == 0:
+			# 		if (xx,yy+1) not in clear:
+			# 			clear.append((xx,yy+1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
 
 		
-			if 0 < xx-1 < 10 and 0 < yy-2 < 10 and board[xx-1][yy-2] != '*':
-				gameboard[xx][yy-1] = board[xx-1][yy-2]
-				if gameboard[xx][yy-1] == 0:
-					if (xx,yy-1) not in clear:
-						clear.append((xx,yy-1))
-						zeros = zeros + 8
-				else:
-					zeros = zeros-1
-			else:
-				zeros = zeros-1
+			# if 0 < xx-1 < 10 and 0 < yy-2 < 10 and board[xx-1][yy-2] != '*':
+			# 	gameboard[xx][yy-1] = board[xx-1][yy-2]
+			# 	if gameboard[xx][yy-1] == 0:
+			# 		if (xx,yy-1) not in clear:
+			# 			clear.append((xx,yy-1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 	zeros = zeros-1
 
-			if 0 < xx < 10 and 0 < yy-1 < 10 and board[xx][yy-1] != '*':
-				gameboard[xx+1][yy] = board[xx][yy-1]
-				if gameboard[xx+1][yy] == 0:
-					if (xx+1,yy) not in clear:
-						clear.append((xx+1,yy))
-						zeros = zeros + 8
-				else:
-					zeros = zeros-1
-			else:
-					zeros = zeros-1
+			# if 0 < xx < 10 and 0 < yy-1 < 10 and board[xx][yy-1] != '*':
+			# 	gameboard[xx+1][yy] = board[xx][yy-1]
+			# 	if gameboard[xx+1][yy] == 0:
+			# 		if (xx+1,yy) not in clear:
+			# 			clear.append((xx+1,yy))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
 
-			if 0 < xx < 10 and 0 < yy < 10 and board[xx][yy] != '*':
-				gameboard[xx+1][yy+1] = board[xx][yy]
-				if gameboard[xx+1][yy+1] == 0:
-					if (xx+1,yy+1) not in clear:
-						clear.append((xx+1,yy+1))
-						zeros = zeros + 8
-				else:
-					zeros = zeros-1
-			else:
-				zeros = zeros-1
+			# if 0 < xx < 10 and 0 < yy < 10 and board[xx][yy] != '*':
+			# 	gameboard[xx+1][yy+1] = board[xx][yy]
+			# 	if gameboard[xx+1][yy+1] == 0:
+			# 		if (xx+1,yy+1) not in clear:
+			# 			clear.append((xx+1,yy+1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 	zeros = zeros-1
 	
-			if 0 < xx < 10 and 0 < yy-2 < 10 and board[xx][yy-2] != '*':
-				gameboard[xx+1][yy-1] = board[xx][yy-2]
-				if gameboard[xx+1][yy-1] == 0:
-					if (xx+1,yy-1) not in clear:
-						clear.append((xx+1,yy-1))
-						zeros = zeros + 8
-				else:
-					zeros = zeros-1
-			else:
-					zeros = zeros-1
+			# if 0 < xx < 10 and 0 < yy-2 < 10 and board[xx][yy-2] != '*':
+			# 	gameboard[xx+1][yy-1] = board[xx][yy-2]
+			# 	if gameboard[xx+1][yy-1] == 0:
+			# 		if (xx+1,yy-1) not in clear:
+			# 			clear.append((xx+1,yy-1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
 
-			if 0 < xx-2 < 10 and 0 < yy < 10 and board[xx-2][yy] != '*':
-				gameboard[xx-1][yy+1] = board[xx-2][yy]
-				if gameboard[xx-1][yy+1] == 0:
-					if (xx-1,yy+1) not in clear:
-						clear.append((xx-1,yy+1))
-						zeros = zeros + 8
-				else:
-					zeros = zeros-1
-			else:
-					zeros = zeros-1
-			if 0 < xx-2 < 10 and 0 < yy-1 < 10 and board[xx-2][yy-1] != '*':
-				gameboard[xx-1][yy] = board[xx-2][yy-1]
-				if gameboard[xx-1][yy] == 0:
-					if (xx-1,yy) not in clear:
-						clear.append((xx-1,yy))
-						zeros = zeros + 8
-				else:
-					zeros = zeros-1
-			else:
-					zeros = zeros-1
+			# if 0 < xx-2 < 10 and 0 < yy < 10 and board[xx-2][yy] != '*':
+			# 	gameboard[xx-1][yy+1] = board[xx-2][yy]
+			# 	if gameboard[xx-1][yy+1] == 0:
+			# 		if (xx-1,yy+1) not in clear:
+			# 			clear.append((xx-1,yy+1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
+			# if 0 < xx-2 < 10 and 0 < yy-1 < 10 and board[xx-2][yy-1] != '*':
+			# 	gameboard[xx-1][yy] = board[xx-2][yy-1]
+			# 	if gameboard[xx-1][yy] == 0:
+			# 		if (xx-1,yy) not in clear:
+			# 			clear.append((xx-1,yy))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
 		
-			if 0 < xx-2 < 10 and 0 < yy-2 < 10 and board[xx-2][yy-2] != '*':
-				gameboard[xx-1][yy-1] = board[xx-2][yy-2]
-				if gameboard[xx-1][yy-1] == 0:
-					if (xx-1,yy-1) not in clear:
-						clear.append((xx-1,yy-1))
-						zeros = zeros + 8
-				else:
-					zeros = zeros-1
-			else:
-					zeros = zeros-1
+			# if 0 < xx-2 < 10 and 0 < yy-2 < 10 and board[xx-2][yy-2] != '*':
+			# 	gameboard[xx-1][yy-1] = board[xx-2][yy-2]
+			# 	if gameboard[xx-1][yy-1] == 0:
+			# 		if (xx-1,yy-1) not in clear:
+			# 			clear.append((xx-1,yy-1))
+			# 			zeros = zeros + 8
+			# 	else:
+			# 		zeros = zeros-1
+			# else:
+			# 		zeros = zeros-1
 	
 
 
@@ -198,7 +211,7 @@ while True:
 		print(x,y)
 		xx = int(x)
 		yy = int(y)
-		if board[int(x)-1][int(y)-1] == 0:
+		if board[int(x)][int(y)-1] == 0:
 			reveal()
 
 		gameboard[int(x)][int(y)] = board[int(x)][int(y)-1]
@@ -220,7 +233,3 @@ exit()
 
 #guess = input("Enter a set of coordinates to reveal a square!")
 #print(guess.arg[1])
-
-
-
-
