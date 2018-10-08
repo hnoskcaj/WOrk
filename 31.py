@@ -66,24 +66,23 @@ for x in range(1,len(board)-1):
 
 print("\n")
 
-
+print(width, height)
 
 for x in range(0,len(gameboard)-1):
-	for b in range(1,11):
+	for b in range(1,height-1):
 		gameboard[b][0] = b
 	gameboard[x][0]
 	del gameboard[x][-1]
-	for a in range(1,11):
+	for a in range(1,width-1):
 		gameboard[0][a]= a
 	
 	print(*gameboard[x])
 
 def reveal():
-	global xx, yy, x, y, zeros
+	global xx, yy, x, y, zeros, width, height
 	zeros = 8
 	while zeros > 0:
 		print(clear)
-		print(xx,yy)
 		clear.append((xx,yy))
 		for z in range(len(clear)):
 			xx = clear[z][0]
@@ -91,7 +90,8 @@ def reveal():
 			for down in range(-1,2):
 				for over in range(-1,2):
 					print(xx+over, yy+down)
-					if 0 < xx+over-1 < 10 and 0 < yy+down-1 < 10 and board[xx+over][yy+down-1] != '*':
+					if 0 < xx+over-1 < width-2 and 0 < yy+down-1 < height-2 and board[xx+over][yy+down-1] != '*':
+						print(xx,yy)
 						gameboard[xx+over][yy+down] = board[xx+over][yy+down-1]
 						if gameboard[xx+over][yy+down] == 0:
 							if (xx+down,yy+down) not in clear:
@@ -216,9 +216,9 @@ while True:
 
 		gameboard[int(x)][int(y)] = board[int(x)][int(y)-1]
 	# print gameboard
-		for a in range(1,11):
+		for a in range(1,width-1):
 			gameboard[0][a]= a
-		for b in range(1,11):
+		for b in range(1,height-1):
 			gameboard[b][0] = b
 
 		for a in range(0,len(gameboard)-1):
