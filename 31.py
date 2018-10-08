@@ -83,84 +83,103 @@ for x in range(0,len(gameboard)-1):
 
 def reveal():
 	global xx, yy, x, y, zeros
-	print(xx,yy)
-	clear.append((xx,yy))
 	zeros = 8
-	for z in range(len(clear)):
-		xx = clear[z][0]
-		yy = clear[z][1]
-		if  xx < 10 and yy+1 < 10 and board[xx-1][yy] != '*':
-			gameboard[xx][yy+1] = board[xx-1][yy]
-			if gameboard[xx][yy+1] == 0:
-				if (xx,yy+1) not in clear:
-					clear.append((xx,yy+1))
-					zeros = 8
+	while zeros > 0:
+		print(clear)
+		print(xx,yy)
+		clear.append((xx,yy))
+		for z in range(len(clear)):
+			xx = clear[z][0]
+			yy = clear[z][1]
+			if  0 < xx < 10 and 0 < yy-1 < 10 and board[xx-1][yy] != '*':
+				gameboard[xx][yy+1] = board[xx-1][yy]
+				if gameboard[xx][yy+1] == 0:
+					if (xx,yy+1) not in clear:
+						clear.append((xx,yy+1))
+						zeros = zeros + 8
+				else:
+					zeros = zeros-1
+			else:
+					zeros = zeros-1
+
+		
+			if 0 < xx-1 < 10 and 0 < yy-2 < 10 and board[xx-1][yy-2] != '*':
+				gameboard[xx][yy-1] = board[xx-1][yy-2]
+				if gameboard[xx][yy-1] == 0:
+					if (xx,yy-1) not in clear:
+						clear.append((xx,yy-1))
+						zeros = zeros + 8
+				else:
+					zeros = zeros-1
 			else:
 				zeros = zeros-1
 
-	
-		if xx < 10 and yy-1 < 10 and board[xx-1][yy-2] != '*':
-			gameboard[xx][yy-1] = board[xx-1][yy-2]
-			if gameboard[xx][yy-1] == 0:
-				if (xx,yy-1) not in clear:
-					clear.append((xx,yy-1))
-					zeros = 8
+			if 0 < xx < 10 and 0 < yy-1 < 10 and board[xx][yy-1] != '*':
+				gameboard[xx+1][yy] = board[xx][yy-1]
+				if gameboard[xx+1][yy] == 0:
+					if (xx+1,yy) not in clear:
+						clear.append((xx+1,yy))
+						zeros = zeros + 8
+				else:
+					zeros = zeros-1
 			else:
-				zeros = zeros-1
+					zeros = zeros-1
 
-		if xx+1 < 10 and yy < 10 and board[xx][yy-1] != '*':
-			gameboard[xx+1][yy] = board[xx][yy-1]
-			if gameboard[xx+1][yy] == 0:
-				if (xx+1,yy) not in clear:
-					clear.append((xx+1,yy))
-					zeros = 8
-			else:
-				zeros = zeros-1
-
-			if xx+1 < 10 and yy+1 < 10 and board[xx][yy] != '*':
+			if 0 < xx < 10 and 0 < yy < 10 and board[xx][yy] != '*':
 				gameboard[xx+1][yy+1] = board[xx][yy]
-			if gameboard[xx+1][yy+1] == 0:
-				if (xx+1,yy+1) not in clear:
-					clear.append((xx+1,yy+1))
-					zeros = 8
+				if gameboard[xx+1][yy+1] == 0:
+					if (xx+1,yy+1) not in clear:
+						clear.append((xx+1,yy+1))
+						zeros = zeros + 8
+				else:
+					zeros = zeros-1
 			else:
 				zeros = zeros-1
 	
-		if xx+1 < 10 and yy-1 < 10 and board[xx][yy-2] != '*':
-			gameboard[xx+1][yy-1] = board[xx][yy-2]
-			if gameboard[xx+1][yy-1] == 0:
-				if (xx+1,yy-1) not in clear:
-					clear.append((xx+1,yy-1))
-					zeros = 8
+			if 0 < xx < 10 and 0 < yy-2 < 10 and board[xx][yy-2] != '*':
+				gameboard[xx+1][yy-1] = board[xx][yy-2]
+				if gameboard[xx+1][yy-1] == 0:
+					if (xx+1,yy-1) not in clear:
+						clear.append((xx+1,yy-1))
+						zeros = zeros + 8
+				else:
+					zeros = zeros-1
 			else:
-				zeros = zeros-1
+					zeros = zeros-1
 
-		if xx-1 < 10 and yy+1 < 10 and board[xx-2][yy] != '*':
-			gameboard[xx-1][yy+1] = board[xx-2][yy]
-			if gameboard[xx-1][yy+1] == 0:
-				if (xx-1,yy+1) not in clear:
-					clear.append((xx-1,yy+1))
-					zeros = 8
+			if 0 < xx-2 < 10 and 0 < yy < 10 and board[xx-2][yy] != '*':
+				gameboard[xx-1][yy+1] = board[xx-2][yy]
+				if gameboard[xx-1][yy+1] == 0:
+					if (xx-1,yy+1) not in clear:
+						clear.append((xx-1,yy+1))
+						zeros = zeros + 8
+				else:
+					zeros = zeros-1
 			else:
-				zeros = zeros-1
-		if xx-1 < 10 and yy < 10 and board[xx-2][yy-1] != '*':
-			gameboard[xx-1][yy] = board[xx-2][yy-1]
-			if gameboard[xx-1][yy] == 0:
-				if (xx-1,yy) not in clear:
-					clear.append((xx-1,yy))
-					zeros = 8
+					zeros = zeros-1
+			if 0 < xx-2 < 10 and 0 < yy-1 < 10 and board[xx-2][yy-1] != '*':
+				gameboard[xx-1][yy] = board[xx-2][yy-1]
+				if gameboard[xx-1][yy] == 0:
+					if (xx-1,yy) not in clear:
+						clear.append((xx-1,yy))
+						zeros = zeros + 8
+				else:
+					zeros = zeros-1
 			else:
-				zeros = zeros-1
+					zeros = zeros-1
+		
+			if 0 < xx-2 < 10 and 0 < yy-2 < 10 and board[xx-2][yy-2] != '*':
+				gameboard[xx-1][yy-1] = board[xx-2][yy-2]
+				if gameboard[xx-1][yy-1] == 0:
+					if (xx-1,yy-1) not in clear:
+						clear.append((xx-1,yy-1))
+						zeros = zeros + 8
+				else:
+					zeros = zeros-1
+			else:
+					zeros = zeros-1
 	
-		if xx-1 < 10 and yy-1 < 10 and board[xx-2][yy-2] != '*':
-			gameboard[xx-1][yy-1] = board[xx-2][yy-2]
-			if gameboard[xx-1][yy-1] == 0:
-				if (xx-1,yy-1) not in clear:
-					clear.append((xx-1,yy-1))
-					zeros = 8
-			else:
-				zeros = zeros-1
-	reveal()
+
 
 
 
