@@ -89,10 +89,9 @@ def reveal():
 			yy = clear[z][1]
 			for down in range(-1,2):
 				for over in range(-1,2):
-					print(xx+over, yy+down)
-					if 0 < xx+over-1 < width-2 and 0 < yy+down-1 < height-2 and board[xx+over][yy+down-1] != '*':
-						print(xx,yy)
+					if 0 < xx+over < width-2 and 0 < yy+down < height-2 and board[xx+over][yy+down-1] != '*':
 						gameboard[xx+over][yy+down] = board[xx+over][yy+down-1]
+						print(xx+over, yy+down)
 						if gameboard[xx+over][yy+down] == 0:
 							if (xx+down,yy+down) not in clear:
 								clear.append((xx+down,yy+down))
@@ -101,7 +100,7 @@ def reveal():
 							zeros = zeros-1
 					else:
 						zeros = zeros-1
-		
+		 
 
 
 			# if  0 < xx < 10 and 0 < yy-1 < 10 and board[xx-1][yy] != '*':
