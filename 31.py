@@ -87,15 +87,15 @@ def reveal():
 		for z in range(len(clear)):
 			xx = clear[z][0]
 			yy = clear[z][1]
+			print (clear)
 			for down in range(-1,2):
 				for over in range(-1,2):
-					if 0 < xx+over < width-2 and 0 < yy+down < height-2 and board[xx+over][yy+down-1] != '*':
+					if 0 < xx+over < width-1 and 0 < yy+down < height-1:
 						gameboard[xx+over][yy+down] = board[xx+over][yy+down-1]
-						print(xx+over, yy+down)
 						if gameboard[xx+over][yy+down] == 0:
-							if (xx+down,yy+down) not in clear:
-								clear.append((xx+down,yy+down))
-								zeros = zeros + 8
+							if (xx+over,yy+down) not in clear:
+								clear.append((xx+over,yy+down))
+								zeros = zeros + 7
 						else:
 							zeros = zeros-1
 					else:
