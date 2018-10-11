@@ -220,24 +220,31 @@ def reveal():
 
 x = 0
 y = 0
+xx = 0
+yy = 0
 while True:
 	try:
-		if gameboard[int(x)][int(y)] == '*':
+		if gameboard[xx][yy] == '*':
 			break
 	# choose second location
-		x, y, w = input("Enter a set of coordinates to reveal a square, add an extra 1 at the end to flag or unflag it: ").split()
+		x, y, w = input("Enter a set of coordinates with a space and 1 after to reveal a square, add an extra 2 instead to flag or unflag it: ").split()
 	# reveal location
-		print(x,y)
+		print(w)
 		xx = int(x)
 		yy = int(y)
-		if w == 1:
-			if gameboard[int(x)][int(y)] != '#':
-				gameboard[int(x)][int(y)] = '#'
+		if w == "2":
+			if gameboard[xx][yy] != '#':
+				gameboard[xx][yy] = '#'
+			else:
+				gameboard[xx][yy] = '-'
 	
-		elif board[int(x)][int(y)-1] == 0:
-			reveal()
+		elif w == "1":
+			if board[xx][yy-1] == 0:
+				reveal()
+			gameboard[xx][yy] = board[xx][yy-1]
 
-		gameboard[int(x)][int(y)] = board[int(x)][int(y)-1]
+		else:
+			print("!!!Type your coordinates x y with a space in between")
 	# print gameboard
 		for a in range(1,width-1):
 			gameboard[0][a]= a
@@ -247,7 +254,9 @@ while True:
 		for a in range(0,len(gameboard)-1):
 			print(*gameboard[a])
 	except ValueError:
-		print("Type your coordinates x y")
+		print("Type your coordinates x y with a space in between")
+	except IndexError:
+		print("Type your coordinates x y with a space in between")
 
 # for x in range(0,len(gameboard)-1):
 # 		print(*gameboard[x])
