@@ -78,28 +78,48 @@ for x in range(0,len(gameboard)-1):
 	
 	print(*gameboard[x])
 
+# def reveal():
+# 	global xx, yy, x, y, zeros, width, height
+# 	zeros = 8
+# 	while zeros > 0:
+# 		print(clear)
+# 		clear.append((xx,yy))
+# 		for z in range(len(clear)):
+# 			xx = clear[z][0]
+# 			yy = clear[z][1]
+# 			print (clear)
+# 			for down in range(-1,2):
+# 				for over in range(-1,2):
+# 					if 0 < xx+over < width-1 and 0 < yy+down < height-1:
+# 						gameboard[xx+over][yy+down] = board[xx+over][yy+down-1]
+# 						if gameboard[xx+over][yy+down] == 0:
+# 							if (xx+over,yy+down) not in clear:
+# 								clear.append((xx+over,yy+down))
+# 								zeros = zeros + 7
+# 						else:
+# 							zeros = zeros-1
+# 					else:
+# 						zeros = zeros-1
+
 def reveal():
 	global xx, yy, x, y, zeros, width, height
-	zeros = 8
-	while zeros > 0:
-		print(clear)
-		clear.append((xx,yy))
-		for z in range(len(clear)):
-			xx = clear[z][0]
-			yy = clear[z][1]
-			print (clear)
-			for down in range(-1,2):
-				for over in range(-1,2):
-					if 0 < xx+over < width-1 and 0 < yy+down < height-1:
-						gameboard[xx+over][yy+down] = board[xx+over][yy+down-1]
-						if gameboard[xx+over][yy+down] == 0:
-							if (xx+over,yy+down) not in clear:
-								clear.append((xx+over,yy+down))
-								zeros = zeros + 7
-						else:
-							zeros = zeros-1
-					else:
-						zeros = zeros-1
+	clear.append((xx,yy))
+
+	z = 0
+	while len(clear) > z:
+		# print(clear)
+		
+		xx = clear[z][0]
+		yy = clear[z][1]
+		# print (clear)
+		for down in range(-1,2):
+			for over in range(-1,2):
+				if 0 < xx+over < width-1 and 0 < yy+down < height-1:
+					gameboard[xx+over][yy+down] = board[xx+over][yy+down-1]
+					if gameboard[xx+over][yy+down] == 0:
+						if (xx+over,yy+down) not in clear:
+							clear.append((xx+over,yy+down))
+		z+=1
 		 
 
 
@@ -205,12 +225,16 @@ while True:
 		if gameboard[int(x)][int(y)] == '*':
 			break
 	# choose second location
-		x, y = input("Enter a set of coordinates to reveal a square: ").split()
+		x, y, w = input("Enter a set of coordinates to reveal a square, add an extra 1 at the end to flag or unflag it: ").split()
 	# reveal location
 		print(x,y)
 		xx = int(x)
 		yy = int(y)
-		if board[int(x)][int(y)-1] == 0:
+		if w == 1:
+			if gameboard[int(x)][int(y)] != '#':
+				gameboard[int(x)][int(y)] = '#'
+	
+		elif board[int(x)][int(y)-1] == 0:
 			reveal()
 
 		gameboard[int(x)][int(y)] = board[int(x)][int(y)-1]
