@@ -1,16 +1,16 @@
 from PIL import Image as i
-import math
-
-imgx = 500
-imgy = 500
-a = 10
-x = 1
-y = 1
+imgx = 512
+imgy = 512
+z = 0
+w = -100
 
 image = i.new("RGB",(imgx, imgy))
 
+for x in range(0,512):
+	for y in range(0,512):
+		image.putpixel((x,y),(w,100,z))
+	z = z + 1
+	w = w + 1
 
-x**2+y**2 = (a**2)[math.atan2(y/x)]**2
-image.putpixel(x,y)
 
 image.save("Demo_i.png","PNG")
