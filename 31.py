@@ -222,12 +222,28 @@ x = 0
 y = 0
 xx = 0
 yy = 0
+mines = sys.argv[3]
 while True:
 	try:
 		if gameboard[xx][yy] == '*':
 			break
+# 		flags = sum(x[1:-1].count('#') for x in gameboard[1:-1])
+# # count uncleared spaces
+		spaces = sum(x[1:len(gameboard)-1].count('-') for x in gameboard[1:len(gameboard)-1])
+		flags = sum(x[1:len(gameboard)-1].count('#') for x in gameboard[1:len(gameboard)-1])
+		print(spaces)
+		print(flags)
+		print(mines)
+
+			# count uncleared spaces
+		if flags+spaces == mines:
+			print("You Won!")
+			exit()
+# 		if flags+uncleared_spaces == mines:
+# 			print("You Won!")
+# 			exit()
 	# choose second location
-		x, y, w = input("Enter a set of coordinates with a space and 1 after to reveal a square, add an extra 2 instead to flag or unflag it: ").split()
+		x, y, w = input("Enter a set of coordinates with a space and 1 after to reveal a square, add an\nextra 2 instead to flag or unflag it: ").split()
 	# reveal location
 		print(w)
 		xx = int(x)
@@ -253,6 +269,7 @@ while True:
 
 		for a in range(0,len(gameboard)-1):
 			print(*gameboard[a])
+
 	except ValueError:
 		print("Type your coordinates x y with a space in between")
 	except IndexError:
