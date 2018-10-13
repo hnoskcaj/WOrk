@@ -222,7 +222,7 @@ x = 0
 y = 0
 xx = 0
 yy = 0
-mines = sys.argv[3]
+mines = int(sys.argv[3])
 while True:
 	try:
 		if gameboard[xx][yy] == '*':
@@ -239,9 +239,7 @@ while True:
 		if flags+spaces == mines:
 			print("You Won!")
 			exit()
-# 		if flags+uncleared_spaces == mines:
-# 			print("You Won!")
-# 			exit()
+			
 	# choose second location
 		x, y, w = input("Enter a set of coordinates with a space and 1 after to reveal a square, add an\nextra 2 instead to flag or unflag it: ").split()
 	# reveal location
@@ -249,9 +247,9 @@ while True:
 		xx = int(x)
 		yy = int(y)
 		if w == "2":
-			if gameboard[xx][yy] != '#':
+			if gameboard[xx][yy] != '#' and gameboard[xx][yy] == '-':
 				gameboard[xx][yy] = '#'
-			else:
+			elif gameboard[xx][yy] == '#':
 				gameboard[xx][yy] = '-'
 	
 		elif w == "1":
