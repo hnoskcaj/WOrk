@@ -27,7 +27,7 @@ ya, yb = -0.6862395607, -0.6861375
 
 imgx, imgy = 1000,1000
 
-maxIt = 2000
+maxIt = 200
 
 image = Image.new("RGB", (imgx,imgy))
 
@@ -41,12 +41,15 @@ for y in range(imgy):
 			if abs(z) >= 2.0:
 				break
 			z = z**2 + c
-		g = 0
-		if i >150:
-			b = int((int(maxIt)/262)*i)
-			r = 0
-		else:
-			b = 0
-			r = int((int(maxIt)/262)*i)
-		image.putpixel((x,y),(r,g,b))
+		
+			if i > 160*(maxIt/200):
+				b = i
+				r = i + 50
+				g = i
+			
+			else:
+				b = 0
+				r = 0
+				g = 0
+			image.putpixel((x,y),(r,g,b))
 image.show()
