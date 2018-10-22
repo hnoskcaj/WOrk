@@ -22,12 +22,12 @@
 
 from PIL import Image
 
-xa, xb = -2, 0.69
-ya, yb = 1, 0.3
+xa, xb = -0.213591222, -0.213408518
+ya, yb = -0.6862395607, -0.6861375
 
-imgx, imgy = 512,512
+imgx, imgy = 1000,1000
 
-maxIt = 200
+maxIt = 2000
 
 image = Image.new("RGB", (imgx,imgy))
 
@@ -41,8 +41,12 @@ for y in range(imgy):
 			if abs(z) >= 2.0:
 				break
 			z = z**2 + c
-		r = int(i*2)
-		g = int(256/i)
-		b = i**2
+		g = 0
+		if i >150:
+			b = int((int(maxIt)/262)*i)
+			r = 0
+		else:
+			b = 0
+			r = int((int(maxIt)/262)*i)
 		image.putpixel((x,y),(r,g,b))
 image.show()
