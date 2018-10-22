@@ -22,8 +22,8 @@
 
 from PIL import Image
 
-xa, xb = -0.74, -0.69
-ya, yb = 0.26, 0.3
+xa, xb = -2, 0.69
+ya, yb = 1, 0.3
 
 imgx, imgy = 512,512
 
