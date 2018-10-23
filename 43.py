@@ -42,14 +42,27 @@ for y in range(imgy):
 				break
 			z = z**2 + c
 		
-			if i > 160*(maxIt/200):
-				b = i
-				r = i + 50
-				g = i
+		if i < 150:
+			b = i*1.2
+			r = i
+			g = i*1.2
+		elif i < 170:
+			b = i*1.2
+			r = i*1.2
+			g = i
+		elif i > 169:
+			b = i
+			r = i*1.2
+			g = i*1.2
+
+			# if i > 160*(maxIt/200):
+			# 	b = i
+			# 	r = i + 50
+			# 	g = i
 			
-			else:
-				b = 0
-				r = 0
-				g = 0
-			image.putpixel((x,y),(r,g,b))
+			# else:
+			# 	b = 0
+			# 	r = 0
+			# 	g = 0
+		image.putpixel((x,y),(int(r),int(g),int(b)))
 image.show()
