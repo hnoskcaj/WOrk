@@ -1,24 +1,4 @@
 
-# import sys
-# import math
-# import random as r
-# board = []
-# count = 0
-# bomb = []
-# gameboard = []
-# a = 0
-# clear = []
-# zeros = 0
-
-# width = int(sys.argv[1])+2 
-# height = int(sys.argv[2])+2
-
-# board = [[0]*width for x in range (height)]
-# print(board)
-
-# if sqrt(z[1]**2 + z[2]**2) >= 2:
-# 	board[][] = count
-# z[n+1] = z[n]**2 + C
 
 from PIL import Image
 
@@ -55,14 +35,46 @@ for y in range(imgy):
 			r = i*1.2
 			g = i*1.2
 
-			# if i > 160*(maxIt/200):
-			# 	b = i
-			# 	r = i + 50
-			# 	g = i
 			
-			# else:
-			# 	b = 0
-			# 	r = 0
-			# 	g = 0
+		image.putpixel((x,y),(int(r),int(g),int(b)))
+image.show()
+
+
+
+from PIL import Image
+
+xa, xb = -0.55160625, -0.5429601
+ya, yb = -0.62665495, -0.6180088
+
+imgx, imgy = 1000,1000
+
+maxIt = 200
+
+image = Image.new("RGB", (imgx,imgy))
+
+for y in range(imgy):
+	cy = y * (yb-ya)/(imgy-1)+ya
+	for x in range(imgx):
+		cx = x * (xb-xa)/(imgx-1) + xa
+		c = complex(cx,cy)
+		z = 0
+		for i in range(maxIt):
+			if abs(z) >= 2.0:
+				break
+			z = z**2 + c
+		if i < 50:
+			r = 250-i*2
+			b = 250
+			g = 250
+		elif i < 100:
+			r = 150
+			b = 250-i*3
+			g = 200
+		else:
+			r = 150
+			b = 0
+			g = 250-i*2
+
+			
 		image.putpixel((x,y),(int(r),int(g),int(b)))
 image.show()
