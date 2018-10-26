@@ -24,20 +24,5 @@ for y in range(imgy):
 		b = math.sin((i/10)+1) *125+125
 		g = math.sin((i/10)+2) *125+125
 
-
-		# if 199 > i > 20:
-		# 	r = i*10
-		# 	g = 255-i*2
-		# 	b = 255-i*2
-		# elif i >199:
-		# 	r = 255
-		# 	g = 255
-		# 	b = 255
-		# else:
-		# 	r = 0
-		# 	b = 0
-		# 	g = 0
-	
-
 		image.putpixel((x,y),(int(r),int(b),int(g)))
 image.show()
