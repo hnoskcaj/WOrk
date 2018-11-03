@@ -23,9 +23,7 @@ class Dog:
 
 
 myDog = Dog("Oleh")
-my2Dog = Dog("Oleh Jr.")
-my3Dog = Dog("Oleh the 3rd")
-my4Dog = Dog("Oleh the 4rth")
-print(my2Dog.stats())
-print(my2Dog.eat())
-print(my2Dog.stats())
+
+print(myDog.stats())
+print(myDog.eat())
+print(myDog.stats())
