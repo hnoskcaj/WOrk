@@ -17,14 +17,13 @@ class table:
 		with open('elements.csv') as csv_file:
 			csv_reader = csv.reader(csv_file, delimiter=',')
 			line_count = 0
-			print(csv_reader[5])
 			for x in csv_reader:
 				name = x[0] 
 				sym = x[2] 
 				num = x[1] 
 				weight = x[3]
-				boil = x[5]
-				melt = x[4]
+				boil = x[4]
+				melt = x[5]
 				self.elems.append(El(name,sym,num,weight,boil,melt))
 
 
