@@ -23,6 +23,7 @@ for i in range(0,x):
 		# print image
 		im.putpixel((i,j),(int(r),int(b),int(g)))
 im.show()
+im.save('rain.png',"PNG")
 
 #------------------------------------------------------------------
 
@@ -47,6 +48,7 @@ for i in range(0,x):
 		##print image
 		im.putpixel((i,j),(int(r),int(b),int(g)))
 im.show()
+im.save('rapgod.png',"PNG")
 
 #------------------------------------------------------------------
 
@@ -70,4 +72,4 @@ for i in range(x):
 		# print image
 		im.putpixel((i,j),pix[i,j])
 im.show()
-
+im.save('inverse.png',"PNG")
