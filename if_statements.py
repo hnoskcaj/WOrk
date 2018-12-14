@@ -166,7 +166,10 @@ else:
    If an int, number, is even, a muliple of 5, and in the range of -100 to 100, then it is a special number. Store whether a number is special or not in the boolean variable special. 
 '''
  
- 
+ if number % 2 == 0:
+ 	if number % 5 == 0:
+ 		if -100 <= number >= 100:
+ 			special = True
  
 ''' 18. 
    Variable letter is a char. Determine if the character is a vowel or not by storing a letter code in the int variable code.
