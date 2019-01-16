@@ -21,12 +21,11 @@ while count < ticker:
 		c = r.randint(0,int((3500-int(f)*9-int(p)*4)/4))
 	if x == 4:
 		p = r.randint(0,int(3500/4))
-		c = r.randint(0,int(3500-int(p)*4/4))
+		c = r.randint(0,int((3500-int(p)*4)/4))
 		f = r.randint(0,int(3500-int(c)*4-int(p)*4/9))
 	if x == 5:
 		c = r.randint(0,int(3500/4))
 		p = r.randint(0,int((3500-int(c)*4)/4))
-		print(int((3500-int(c)*4-int(p)*4)/9))
 		f = r.randint(0,int((3500-int(c)*4-int(p)*4)/9))
 	if x == 6:
 		c = r.randint(0,int(3500/4))
@@ -35,10 +34,10 @@ while count < ticker:
 	cal = f*9+p*4+c*4
 	lst.append(cal)
 	count += 1
-for x in range(0,3500):
+for x in range(1750,3500):
 	# print(lst.count(x))
 	result.append(lst.count(x))
 
-r = [x for x in range(0,3500)]
+r = [x for x in range(1750,3500)]
 plt.bar(r,result)
 plt.show()
