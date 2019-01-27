@@ -6,15 +6,15 @@ from kivy.uix.button import Button
 class MontyHall(BoxLayout):
 	def __init__(self,**kwargs):
 		super(MontyHall, self).__init__(**kwargs)
-		btn1 = Button(text="Door One", background_color = (1,8,1,3))
+		btn1 = Button(text="Door One", background_color = (1,8,1,3), font_size=(100))
 		btn1.bind(on_press=self.door1)
 		self.add_widget(btn1)
 
-		btn2 = Button(text="Door Two", background_color = (0,0,2,5))
+		btn2 = Button(text="Door Two", background_color = (0,0,2,5), font_size=(100))
 		btn2.bind(on_press=self.door2)
 		self.add_widget(btn2)
 
-		btn3 = Button(text="Door Three", background_color = (7,1,0,1))
+		btn3 = Button(text="Door Three", background_color = (7,1,0,1), font_size=(100))
 		btn3.bind(on_press=self.door3)
 		self.add_widget(btn3)
 
