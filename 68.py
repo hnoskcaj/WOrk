@@ -3,7 +3,7 @@
 # 1/19
 # On myhonor i have neither given nor recieved unuthorized aid -Jackson
 
-# sources: Kivy docs, stacks overflow, python docs
+# sources: Kivy docs, stacks overflow, python docs, Alexander Taylor (youtube.com/watch?v=F7UKmK9eQLY)
 
 # Kivy: https://kivy.org/#home
 
